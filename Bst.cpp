@@ -88,6 +88,8 @@ class Bst
 			temp=findmin(curr->left);
 		}
 	}
+	int height()
+	void rangesearch(int h,int l)//Display all values between h & l.	
 	void display()
 	{
 		displayhelper(root);
