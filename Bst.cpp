@@ -7,11 +7,13 @@ class Node()
 	int data;
 	Node *left;
 	Node *right;
+	Node *parent;
 	Node(int n)
 	{
 		data=n;
 		left=NULL;
 		right=NULL;
+		parent=NULL;
 	}
 };
 class Bst
@@ -37,6 +39,7 @@ class Bst
 			if(curr->left==NULL)
 			{
 				curr->left=new Node(n);
+				curr->left->parent=curr;
 			}
 			else
 			{
@@ -48,13 +51,43 @@ class Bst
 			if(curr->right==NULL)
 			{
 				curr->right=new Node(n);
+				curr->right->parent=curr;
 			}
 			else
 			{
 				inserthelper(curr->right,n);
 			}
 		}
-	}		
+	}
+	int c;
+	int count(Node *curr)
+	{
+		count(curr->left);
+		if(curr!=NULL)
+		{
+			c++;
+		}
+		count(curr->right);
+	}
+	void replacewithparent(Node* curr, Node* temp)
+	void delete(int n)
+	Node* find(int n)
+	{
+		return search(n);
+	}
+	Node* findmin(Node *curr)
+	{
+		Node *temp=curr;
+		if(curr->left==NULL)
+		{
+			temp=curr;
+			return temp;
+		}
+		else
+		{
+			temp=findmin(curr->left);
+		}
+	}
 	void display()
 	{
 		displayhelper(root);
